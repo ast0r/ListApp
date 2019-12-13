@@ -56,7 +56,7 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         
         self.title = "Detail"
-        view.backgroundColor = .yellow
+        view.backgroundColor = .white
         
         view.addSubview(avatarImageView)
         view.addSubview(nameLabel)

@@ -18,25 +18,26 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             
             let window = UIWindow(windowScene: windowsScene)
             
-            
             let tabBarController = UITabBarController()
             tabBarController.tabBar.tintColor = UIColor(named: "myColor")
             
+            //MainView
             let mainVC = MainTableViewController()
-            mainVC.title = "Main"
-            mainVC.view.backgroundColor = .green
+            mainVC.title = "Main"            
             let newImageTabBarItem = UIImage(systemName: "text.alignleft")
             mainVC.tabBarItem = UITabBarItem(title: "New", image: newImageTabBarItem, tag: 0)
             
+            //FavoriteView
             let favoriteVC = FavoriteTableViewController()
             favoriteVC.title = "Favorite"
-            favoriteVC.view.backgroundColor = .orange
             favoriteVC.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
             
+            //add view to TabBar
             let controllers = [mainVC,favoriteVC]
             tabBarController.viewControllers = controllers
             
-            tabBarController.viewControllers = controllers.map {            UINavigationController(rootViewController: $0)
+            tabBarController.viewControllers = controllers.map {
+                UINavigationController(rootViewController: $0)
             }
             
             window.rootViewController = tabBarController
