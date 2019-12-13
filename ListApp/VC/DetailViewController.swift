@@ -55,7 +55,6 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
         self.title = "Detail"
         view.backgroundColor = .yellow
         
@@ -68,7 +67,6 @@ class DetailViewController: UIViewController {
         constraintView()
         
         initDetail(user: user)
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -96,7 +94,7 @@ class DetailViewController: UIViewController {
         guard let last_name = user.last_name else { return }
         
         nameLabel.text = "\(first_name) \(last_name)"
-        detailLabel.text = "\(user.email) textetxtettextetxtettextetxtettextetxtettextetxtettextetxtet"
+        detailLabel.text = "\(user.email!) textetxtettextetxtettextetxtettextetxtettextetxtettextetxtet"
         
         guard let imageUrl = DataWork.getImageUrl(urlString: user.avatar) else {return}
         DispatchQueue.main.async {
@@ -112,19 +110,6 @@ class DetailViewController: UIViewController {
             favoriteButton.setImage(imageNotFill, for: .normal)
             isChecked = false
         }
-        
-        /*
-         // MARK: - Navigation
-         
-         // In a storyboard-based application, you will often want to do a little preparation before navigation
-         override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-         // Get the new view controller using segue.destination.
-         // Pass the selected object to the new view controller.
-         }
-         */
-        
-        
-        
     }
     
     func constraintView() {

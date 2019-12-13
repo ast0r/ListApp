@@ -26,13 +26,12 @@ class DataWork {
         
         do {
             try context.save()
-            print("save")
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
         }
     }
     
-  class func fetchAllData() -> [User] {
+    class func fetchAllData() -> [User] {
         
         var arr = [User]()
         
@@ -70,8 +69,7 @@ class DataWork {
                 context.delete(objToDelete)
                 
                 do {
-                   try context.save()
-                    print("delete")
+                    try context.save()
                 } catch let error as NSError {
                     print("Could not delete. \(error), \(error.userInfo)")
                 }
@@ -84,7 +82,7 @@ class DataWork {
     }
     
     class func checkConsistUser(userId: Int?) -> Bool {
-                
+        
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         let fetchRequst = NSFetchRequest<NSManagedObject>(entityName: "Users")
@@ -104,9 +102,9 @@ class DataWork {
         return false
     }
     
-  class func converFromNsToUser(nsUsers: [NSManagedObject]) -> [User] {
+    class func converFromNsToUser(nsUsers: [NSManagedObject]) -> [User] {
         
-    var users: [User] = []
+        var users: [User] = []
         for item in nsUsers {
             
             var user = User()
@@ -118,10 +116,10 @@ class DataWork {
             
             users.append(user)
         }
-    return users
+        return users
     }
     
-  class func getImageUrl(urlString: String?) -> URL? {
+    class func getImageUrl(urlString: String?) -> URL? {
         if let imageUrlString = urlString {
             let urlImage = URL(string: imageUrlString)
             return urlImage
