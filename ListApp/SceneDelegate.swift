@@ -12,12 +12,42 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        
+        if let windowsScene = scene as? UIWindowScene {
+            
+            let window = UIWindow(windowScene: windowsScene)
+            
+            
+            let tabBarController = UITabBarController()
+            tabBarController.tabBar.tintColor = UIColor(named: "myColor")
+            
+            let mainVC = MainTableViewController()
+            mainVC.title = "Main"
+            mainVC.view.backgroundColor = .green
+            let newImageTabBarItem = UIImage(systemName: "text.alignleft")
+            mainVC.tabBarItem = UITabBarItem(title: "New", image: newImageTabBarItem, tag: 0)
+            
+            let favoriteVC = FavoriteTableViewController()
+            favoriteVC.title = "Favorite"
+            favoriteVC.view.backgroundColor = .orange
+            favoriteVC.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
+            
+            let controllers = [mainVC,favoriteVC]
+            tabBarController.viewControllers = controllers
+            
+            tabBarController.viewControllers = controllers.map {            UINavigationController(rootViewController: $0)
+            }
+            
+            window.rootViewController = tabBarController
+            
+            self.window = window
+            window.makeKeyAndVisible()
+        }
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+        //guard let _ = (scene as? UIWindowScene) else { return }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
